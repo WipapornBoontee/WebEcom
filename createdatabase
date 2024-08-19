@@ -1,0 +1,25 @@
+CREATE TABLE tb_user (
+    u_id int NOT NULL,
+    u_name varchar(30) NOT NULL ,
+    u_pass varchar(15) NOT NULL ,
+    u_fname varchar(30) NOT NULL ,
+    u_lname varchar(30) NOT null,
+    u_email varchar(30) NOT NUll ,
+    u_address text ,
+    CONSTRAINT pk_tb_user PRIMARY KEY(u_id,u_name)
+);
+
+ALTER TABLE tb_user
+ADD COLUMN role ENUM ('user','admin') DEFAULT ('user')
+
+SELECT tb_user.u_id , tb_product.p_name , tb_product.p_date FROM tb_product INNER JOIN tb_user ON tb_product.p_id = tb_user.u_id;
+
+CREATE TABLE tb_product (
+    p_id int PRIMARY KEY AUTO_INCREMENT,
+    p_name varchar(30) NOT NULL ,
+    detail text , 
+    descriptio varchar(15) NOT NULL ,
+    p_price int NOT NULL ,
+    p_date date ,
+    p_num int 
+);
